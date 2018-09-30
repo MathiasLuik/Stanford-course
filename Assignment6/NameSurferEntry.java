@@ -24,14 +24,11 @@ public class NameSurferEntry implements NameSurferConstants {
 	public NameSurferEntry(String line) {
 		int nameEnd = line.indexOf(" ");
 		Name = line.substring(0, nameEnd);
-		String allDecadeNumbersStr = line.substring(nameEnd + 1);
-		String[] allDecadeNumbersList = allDecadeNumbersStr.split(" ");
-		int countingDecade=0;
-		for (String decadeNumber : allDecadeNumbersList) {
-			
-			int popularityRank=Integer.parseInt(decadeNumber);
-			rankings[countingDecade] = popularityRank;
-			countingDecade++;
+		String numbers = line.substring(nameEnd + 1);
+		StringTokenizer tokenizer = new StringTokenizer(numbers);
+		for(int count = 0; tokenizer.hasMoreTokens(); count++) {
+			int popularityRank = Integer.parseInt(tokenizer.nextToken());
+			rankings[count] = popularityRank;
 		}
 		
 		

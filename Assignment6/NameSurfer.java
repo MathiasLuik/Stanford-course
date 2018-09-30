@@ -62,23 +62,15 @@ public class NameSurfer extends Program implements NameSurferConstants {
  */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("Clear")) {
-			//yprintln("Clear");
 			graph.clear();
 			graph.update();
 		}
 		else  {
 			String insertedName=nameField.getText();
-			//String insertedName="mary";
-			//String insertedName="oliver";
-			//NameSurferEntry rankings = nam
 			NameSurferEntry rankings = nameFromDatabase.findEntry(insertedName);
 			if (rankings!=null){
-				System.out.println("I found out ranking is not null");
-				//graph.addEntry(rankings);
+				graph.addEntry(rankings);
 				graph.update();
-				//System.out.println(rankings);
-				//NameSurferEntry getData= nameFromDatabase.NameS
-				//println("Graph: " + (rankings));
 			}
 			
 			

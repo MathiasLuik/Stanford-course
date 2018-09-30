@@ -9,7 +9,7 @@
 public interface NameSurferConstants {
 
 /** The width of the application window */
-	public static final int APPLICATION_WIDTH = 800;
+	public static final int APPLICATION_WIDTH = 770;
 
 /** The height of the application window */
 	public static final int APPLICATION_HEIGHT = 600;
