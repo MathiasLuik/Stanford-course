@@ -27,7 +27,7 @@ public class FacePamphletProfile {
 	 * the profile.
 	 */
 	public FacePamphletProfile(String name) {
-		name=this.name;
+		this.name=name;
 		// your code here
 	}
 

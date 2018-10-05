@@ -31,9 +31,6 @@ public class FacePamphletServer extends ConsoleProgram
 	 */
 	
 	
-	
-	
-	
 	public void run() {
 		println("Starting server on port " + PORT);
 		server.start();
@@ -58,6 +55,7 @@ public class FacePamphletServer extends ConsoleProgram
 	
 	
 	public String requestMade(Request request) {
+		FacePamphletProfile name;
 		List<FacePamphletProfile> people = new ArrayList<FacePamphletProfile>();
 		String cmd = request.getCommand();
 		cmd.toString();
@@ -73,7 +71,10 @@ public class FacePamphletServer extends ConsoleProgram
 			System.out.println("addProfile Test is passed");
 			System.out.println(cmd); //addProfile
 			System.out.println(request.toGetRequest());  //addProfile?name=Chris
+			name = new FacePamphletProfile(request.getParam("name"));
+			System.out.println("---" + name.getName());
 			System.out.println(request.getParam("name")); //Chris
+			
 			//people.add(request.getParam("name"));
 			//System.out.println(request.getRaw(cmd)); //null
 			//System.out.println(request.getParam(cmd));
@@ -82,6 +83,8 @@ public class FacePamphletServer extends ConsoleProgram
 			return "success";
 			//return request.getParam(cmd);
 		}
+		
+		
 		
 		
 		
