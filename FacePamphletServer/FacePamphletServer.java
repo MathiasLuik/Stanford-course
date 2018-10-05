@@ -23,7 +23,7 @@ public class FacePamphletServer extends ConsoleProgram
 	
 	/* The server object. All you need to do is start it */
 	private SimpleServer server = new SimpleServer(this, PORT);
-	
+	//private FacePamphletProfile name;
 	/**
 	 * Starts the server running so that when a program sends
 	 * a request to this computer, the method requestMade is
@@ -55,7 +55,7 @@ public class FacePamphletServer extends ConsoleProgram
 	
 	
 	public String requestMade(Request request) {
-		FacePamphletProfile name;
+		
 		List<FacePamphletProfile> people = new ArrayList<FacePamphletProfile>();
 		String cmd = request.getCommand();
 		cmd.toString();
@@ -71,9 +71,13 @@ public class FacePamphletServer extends ConsoleProgram
 			System.out.println("addProfile Test is passed");
 			System.out.println(cmd); //addProfile
 			System.out.println(request.toGetRequest());  //addProfile?name=Chris
-			name = new FacePamphletProfile(request.getParam("name"));
-			System.out.println("---" + name.getName());
-			System.out.println(request.getParam("name")); //Chris
+			FacePamphletProfile name = new FacePamphletProfile(request.getParam("name"));
+			System.out.println();
+			//people.add(getName());
+			//FacePamphletProfile names = new FacePamphletProfile(name)
+			//System.out.println();
+			//System.out.println("---" + name.getName());
+			//System.out.println(request.getParam("name")); //Chris
 			
 			//people.add(request.getParam("name"));
 			//System.out.println(request.getRaw(cmd)); //null

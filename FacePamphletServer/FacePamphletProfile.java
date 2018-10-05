@@ -13,7 +13,7 @@ import java.util.*;
 import javax.management.loading.PrivateClassLoader;
 
 public class FacePamphletProfile {
-	private ArrayList<String> arraylist = new ArrayList<String>();
+	public ArrayList<String> listOfPeopleWithProfile = new ArrayList<String>();
 	// your code here
 	String name;
 	String fileName;
@@ -28,7 +28,21 @@ public class FacePamphletProfile {
 	 */
 	public FacePamphletProfile(String name) {
 		this.name=name;
-		// your code here
+		
+		listOfPeopleWithProfile.add(name);
+		System.out.println("list of people with profile" +listOfPeopleWithProfile);
+		
+	}
+	
+	public FacePamphletProfile(String name,String fileName, String status, String friend, String listOfPeople) {
+		this.name=name;
+		this.fileName=fileName;
+		this.status=status;
+		this.friend=friend;
+		this.listOfPeople=listOfPeople;
+		listOfPeopleWithProfile.add(name);
+		System.out.println("list of people with profile" +listOfPeopleWithProfile);
+		
 	}
 
 	/** This method returns the name associated with the profile. */ 
