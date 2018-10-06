@@ -164,8 +164,9 @@ public class ServerTester extends ConsoleProgram {
 		runTest(f10, true, "");
 		
 		// and what if we send a bad command?
-		Request bad = new Request("badCommand");
-		runTest(bad, true, "");
+		//Request bad = new Request("badCommand");
+		//runTest(bad, true, "");
+		
 	}
 
 	/**

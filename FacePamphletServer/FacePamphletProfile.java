@@ -29,8 +29,8 @@ public class FacePamphletProfile {
 	public FacePamphletProfile(String name) {
 		this.name=name;
 		
-		listOfPeopleWithProfile.add(name);
-		System.out.println("list of people with profile" +listOfPeopleWithProfile);
+		//listOfPeopleWithProfile.add(name);
+		//System.out.println("list of people with profile" +listOfPeopleWithProfile);
 		
 	}
 	
