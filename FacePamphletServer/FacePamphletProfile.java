@@ -15,11 +15,11 @@ import javax.management.loading.PrivateClassLoader;
 public class FacePamphletProfile {
 	public ArrayList<String> listOfPeopleWithProfile = new ArrayList<String>();
 	// your code here
-	String name;
-	String fileName;
-	String status;
-	String friend;
-	String listOfPeople;
+	private String name;
+	private String fileName;
+	private String status;
+	private String friend;
+	private String listOfPeople;
 
 	/** 
 	 * Constructor
@@ -33,7 +33,7 @@ public class FacePamphletProfile {
 		//System.out.println("list of people with profile" +listOfPeopleWithProfile);
 		
 	}
-	
+	/*
 	public FacePamphletProfile(String name,String fileName, String status, String friend, String listOfPeople) {
 		this.name=name;
 		this.fileName=fileName;
@@ -44,21 +44,22 @@ public class FacePamphletProfile {
 		System.out.println("list of people with profile" +listOfPeopleWithProfile);
 		
 	}
-
+	*/
 	/** This method returns the name associated with the profile. */ 
 	public String getName() {
 		// You fill this in.  Currently always returns the empty string.
-		return name;
+		return this.name;
 	}
 
 
 	public String getImageFileName() {
 		// You fill this in.  Currently always returns the empty string.
-		return fileName;
+		return this.fileName;
 	}
 
 	/** This method sets the image associated with the profile. */ 
 	public void setImageFileName(String fileName) {
+		this.fileName=fileName;
 		// You fill this in.
 	}
 
@@ -69,12 +70,12 @@ public class FacePamphletProfile {
 	 */ 
 	public String getStatus() {
 		// You fill this in.  Currently always returns the empty string.
-		return status;
+		return this.status;
 	}
 
 	/** This method sets the status associated with the profile. */ 
 	public void setStatus(String status) {
-		// You fill this in. 
+		this.status=status; 
 	}
 
 	/** 

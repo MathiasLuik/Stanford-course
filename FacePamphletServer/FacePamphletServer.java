@@ -70,66 +70,98 @@ public class FacePamphletServer extends ConsoleProgram
 		}
 		return false;
 	}
+	
+	private String requestAnswer() {
+		
+		return null;
+	}
 	public String requestMade(Request request) {		
 		//List<FacePamphletProfile> people = new ArrayList<FacePamphletProfile>();		
 		String cmd = request.getCommand();
-		System.out.println(request.getCommand());
-		
-		//System.out.println(request.getParam(cmd));
-		//System.out.println(cmd);
-		String value=request.toGetRequest(); //addProfile?name=Chris
-		//System.out.println(value);
-		//System.out.println(value.indexOf("="));
-		//System.out.println(value.substring(value.indexOf("?")+1, value.indexOf("=")));
-		 // i need to get location of "?" AND "=", then can make substring with a value of Name. Otherwise it would return error
-		String getParamKey=value.substring(value.indexOf("?")+1, value.indexOf("="));
-		//System.out.println(request.getRaw(cmd));
-		
+		//System.out.println(request.getCommand());
 		cmd.toString();
-		//if(request.getParam("name")!=null) {
-		if(getParamKey=="name") {
+		try {
+			//System.out.println(request.getParam(cmd));
+			//System.out.println(cmd);
+			String value=request.toGetRequest(); //addProfile?name=Chris
+			//System.out.println(value);
+			//System.out.println(value.indexOf("="));
+			//System.out.println(value.substring(value.indexOf("?")+1, value.indexOf("=")));
+			
+			// i need to get location of "?" AND "=", then can make substring with a value of Name. Otherwise it would return error
+			String getParamKey=value.substring(value.indexOf("?")+1, value.indexOf("="));
+			
+			//System.out.println(request.getRaw(cmd));
+			
+			
+			//if(request.getParam("name")!=null) {
+			//if(getParamKey=="name") {
+			//FacePamphletProfile name = new FacePamphletProfile(request.getParam(getParamKey));
 			FacePamphletProfile name = new FacePamphletProfile(request.getParam("name"));
 			profileName = name.getName();
-		}
-		
-		if(cmd.equals("ping")) {
-			System.out.println("Ping Test is passed");
 			
-			return request.getParam(cmd);
-		}
-		else if(cmd.equals("addProfile")) {
-			//System.out.println(cmd); //addProfile
-			//System.out.println(request.toGetRequest());  //addProfile?name=Chris			
-			//FacePamphletProfile name = new FacePamphletProfile(request.getParam("name"));
-			//String profileName = name.getName();
-		
-			//System.out.println("request.getParam(\"name\") = " + name.getName());
-			//System.out.println("peoples array = " + people);
 			
-			if (!containsProfile(profileName)){
-				people.add(profileName);			
-				return "success";				
-			} 
-		}
-		else if(cmd.equals("containsProfile")) {
-			//FacePamphletProfile name = new FacePamphletProfile(request.getParam("name"));
-			//String profileName = name.getName();	
-			if (containsProfile(profileName)){				
-				return "true";				
+			if(cmd.equals("ping")) {
+				//System.out.println("Ping Test is passed");
+				
+				return request.getParam(cmd);
 			}
-			else {
-				return "false";
+			else if(cmd.equals("addProfile")) {
+				//System.out.println(cmd); //addProfile
+				//System.out.println(request.toGetRequest());  //addProfile?name=Chris			
+				//FacePamphletProfile name = new FacePamphletProfile(request.getParam("name"));
+				//String profileName = name.getName();
+			
+				//System.out.println("request.getParam(\"name\") = " + name.getName());
+				//System.out.println("peoples array = " + people);
+				
+				if (!people.contains(profileName)){
+					people.add(profileName);			
+					return "success";				
+				} 
 			}
-		}
-		else if(cmd.equals("deleteProfile")) {
-			//FacePamphletProfile name = new FacePamphletProfile(request.getParam("name"));
-			//String profileName = name.getName();	
-			if (containsProfile(profileName)){				
-				people.remove(profileName);
-				return "success";				
+			else if(cmd.equals("containsProfile")) {
+				//FacePamphletProfile name = new FacePamphletProfile(request.getParam("name"));
+				//String profileName = name.getName();	
+				if (people.contains(profileName)){				
+					return "true";				
+				}
+				else {
+					return "false";
+				}
 			}
+			else if(cmd.equals("deleteProfile")) {
+				if (people.contains(profileName)){				
+					people.remove(profileName);
+					return "success";				
+				}
+			}
+			
+			
+			else if(cmd.equals("setStatus") && people.contains(profileName)) {
+				System.out.println("setstatus" + request.getParam("status"));
+				name.setStatus(request.getParam("status"));
+				System.out.println("nüüd praegune status on " + name.getStatus());
+				return "success";			
+			}
+			else if(cmd.equals("getStatus") && people.contains(profileName)) {
+				System.out.println(name.getStatus() + " vaatame getStatust " + name.getName()); //serverTesteb tee uue instance Chris aga see peaks kuhugi salvestuma
+				if (name.getStatus()!=null) {
+					return name.getStatus();
+				}else {
+					return "";
+				}
+			}
+			return "Error: Unknown command " + cmd + ".";
+
+		
 		}
+		catch (Exception e) {
+            //do something clever with the exception
+            System.out.println(e.getMessage() + " midagi kehvasti ");
+        }
 		return "Error: Unknown command " + cmd + ".";
+		
 	}
 
 }

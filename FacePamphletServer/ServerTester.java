@@ -22,7 +22,7 @@ public class ServerTester extends ConsoleProgram {
 	//mainstuff
 	/* Run all of the tests */
 	public void run() {
-
+		
 		// a welcome message
 		println("Running the FacePamphlet server tester");
 		println("Make sure that the server has just been restarted");
@@ -76,6 +76,7 @@ public class ServerTester extends ConsoleProgram {
 		Request d2 = new Request("addProfile");
 		d2.addParam("name", "Beyonce Knowles");
 		runTest(d2, false, "success");
+		
 		
 		Request d3 = new Request("deleteProfile");
 		d3.addParam("name", "Beyonce Knowles");
